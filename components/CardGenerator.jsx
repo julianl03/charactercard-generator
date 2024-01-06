@@ -2,8 +2,6 @@
 import { useState, useEffect } from 'react'
 export default function CardGenerator(){
 
-    const api_key = "" //UNSPLASH API KEY
-    //values that can be shown on the player card
     const [card, setCard] = useState({
         nameText: "",
         classText: "",
@@ -32,7 +30,7 @@ export default function CardGenerator(){
     //get images to be shown on the card
     useEffect(() => {
         async function getCardImages() {
-            const response = await fetch("https://api.unsplash.com/photos/random?query=warrior&orientation=portrait&content_filter=high&count=30&client_id="+api_key)
+            const response = await fetch("https://api.unsplash.com/photos/random?query=warrior&orientation=portrait&content_filter=high&count=30&client_id="+import.meta.env.VITE_REACT_UNSPLASH_KEY)
             const responseData = await response.json()
             setAllCards(responseData)
         }
